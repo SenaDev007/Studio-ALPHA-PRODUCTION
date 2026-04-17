@@ -29,6 +29,11 @@ const serif = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.domain),
+  icons: {
+    icon: "/gallery/logo%20Studio%20ALPHA%20PRODUCTION.png",
+    apple: "/gallery/logo%20Studio%20ALPHA%20PRODUCTION.png",
+    shortcut: "/gallery/logo%20Studio%20ALPHA%20PRODUCTION.png"
+  },
   title: {
     default: `${siteConfig.name} | Vision. Image. Impact.`,
     template: `%s | ${siteConfig.name}`

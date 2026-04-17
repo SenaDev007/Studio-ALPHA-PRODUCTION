@@ -1,4 +1,7 @@
 import { ImageResponse } from "next/og";
+import { siteConfig } from "@/lib/site";
+
+const logoUrl = `${siteConfig.domain}/gallery/logo%20Studio%20ALPHA%20PRODUCTION.png`;
 
 export const runtime = "edge";
 export const size = {
@@ -23,33 +26,14 @@ export default function OpenGraphImage() {
           color: "#F8F6F3"
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <svg width="54" height="44" viewBox="0 0 42 34" fill="none">
-            <rect x="4" y="8" width="34" height="22" rx="3" fill="#2D2DB5" />
-            <rect x="14" y="2" width="14" height="8" rx="2" fill="#2D2DB5" />
-            <circle cx="21" cy="19" r="7" fill="#1a1a90" />
-            <circle cx="21" cy="19" r="4.5" fill="#2D2DB5" stroke="#F07921" strokeWidth="1.5" />
-            <circle cx="21" cy="19" r="2" fill="#4545D4" />
-            <rect x="6" y="11" width="5" height="3" rx="1" fill="#1a1a8a" />
-          </svg>
-          <div
-            style={{
-              width: "2px",
-              height: "40px",
-              background: "linear-gradient(180deg,#F07921,#2D2DB5)"
-            }}
+        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          <img
+            src={logoUrl}
+            alt="Studio ALPHA PRODUCTION"
+            width="246"
+            height="123"
+            style={{ objectFit: "contain" }}
           />
-          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1 }}>
-            <span style={{ fontSize: "12px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#F07921" }}>
-              studio
-            </span>
-            <span style={{ fontSize: "28px", letterSpacing: "0.2em", color: "#6B6B6B", fontWeight: 700 }}>
-              ALPHA
-            </span>
-            <span style={{ fontSize: "10px", letterSpacing: "0.34em", textTransform: "uppercase", color: "#888888" }}>
-              Production
-            </span>
-          </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "14px", maxWidth: "760px" }}>
