@@ -12,111 +12,219 @@ export const siteConfig = {
   name: "Studio ALPHA PRODUCTION",
   shortName: "ALPHA PRODUCTION",
   description:
-    "Studio ALPHA PRODUCTION accompagne les marques, institutions et evenements a Cotonou avec une production audiovisuelle structuree, sobre et pensee pour la visibilite.",
+    "Studio ALPHA PRODUCTION propose la production video, la photographie, la prise de vue drone, la diffusion live et la formation drone a Cotonou.",
   domain: normalizedSiteUrl.replace(/\/$/, ""),
   email: "contact@studio-alpha-production.com",
   phoneDisplay: "+229 01 67 06 09 77",
   phoneHref: "+2290167060977",
   whatsappDisplay: "+229 67 06 09 77",
-  whatsappHref: "https://wa.me/22967060977",
+  whatsappApi: "https://wa.me/22967060977",
   city: "Cotonou",
   country: "Benin",
-  githubUrl: "https://github.com/SenaDev007/Studio-ALPHA-PRODUCTION.git"
+  githubUrl: "https://github.com/SenaDev007/Studio-ALPHA-PRODUCTION.git",
+  tagline: "Vision. Image. Impact."
 };
+
+export const heroStats = [
+  { value: "150+", label: "Projets livres" },
+  { value: "5", label: "Piliers de service" },
+  { value: "3", label: "Axes: sol, live, drone" }
+];
 
 export const services = [
   {
     index: "01",
     title: "Production video",
     description:
-      "Films corporate, interviews, teasers et formats courts pour les entreprises, structures publiques et marques locales."
+      "Clips institutionnels, publicites, documentaires et evenements. Le studio construit des recits propres avec une execution soignee.",
+    cta: "#contact"
   },
   {
     index: "02",
-    title: "Captation evenementielle",
+    title: "Prise de vue drone",
     description:
-      "Couverture de conferences, ceremonies, lancements et activations avec livrables adaptes a la diffusion rapide."
+      "Vues aeriennes pour l'immobilier, les evenements, les activations et les films de marque avec trajectoires maitrisees.",
+    cta: "#formation"
   },
   {
     index: "03",
-    title: "Photographie professionnelle",
+    title: "Photographie",
     description:
-      "Portraits, reportages, produits et images de communication utilisables sur site web, dossier ou reseaux sociaux."
+      "Portraits, reportages, produits et images corporate pour renforcer l'identite visuelle sur tous les supports.",
+    cta: "#contact"
   },
   {
     index: "04",
-    title: "Montage et postproduction",
+    title: "Postproduction",
     description:
-      "Assemblage, etalonnage, sous-titrage et declinaisons verticales, carrees ou horizontales selon le canal."
-  }
-];
-
-export const sectors = [
-  {
-    tag: "Marques",
-    title: "Lancement de produit et image de marque",
-    description:
-      "Concevoir des contenus courts qui clarifient l'offre, soutiennent la distribution et ameliorent la presence digitale."
+      "Montage, etalonnage, sound design, sous-titrage et declinaisons multi-formats pour une diffusion immediate.",
+    cta: "#contact"
   },
   {
-    tag: "Institutionnel",
-    title: "Communication d'organisation",
+    index: "05",
+    title: "Diffusion live",
     description:
-      "Documenter les actions, les equipes et les resultats dans un langage visuel coherent et plus credible."
+      "Streaming de conferences, concerts, ceremoniees et prises de parole avec une mise en ligne fluide sur les plateformes utiles.",
+    cta: "#contact"
   },
   {
-    tag: "Evenement",
-    title: "Captation et recapitulatif",
+    index: "06",
+    title: "Formation drone",
     description:
-      "Etendre la portee d'un evenement avec des resumes rapides, des interviews et des declinaisons reseaux."
+      "Apprentissage progressif du pilotage et de la prise de vue aerienne, du debutant au niveau professionnel.",
+    cta: "#formation"
   }
 ];
 
 export const showcaseProjects = [
   {
-    slug: "brand-campaign",
-    category: "Campagne de marque",
-    title: "Narration produit pour une marque locale",
-    summary:
-      "Direction visuelle, tournage court et declinaisons social media pour installer une identite plus nette.",
-    deliverables: "Film hero, reels, formats sponsorises",
-    image: "/gallery/brand-campaign.svg"
+    slug: "tower-inauguration",
+    category: "Drone · Corporate",
+    title: "Summit Tower inauguration",
+    image: "/gallery/brand-campaign.svg",
+    span: "lg:col-span-7 lg:row-span-2"
   },
   {
-    slug: "institution-report",
-    category: "Institutionnel",
-    title: "Couverture d'activites et valorisation d'equipe",
-    summary:
-      "Captation terrain, interviews et montage structure pour documenter les actions et produire des preuves visuelles.",
-    deliverables: "Interview, recap, phototheque",
-    image: "/gallery/institution-report.svg"
+    slug: "elegance-wedding",
+    category: "Evenement",
+    title: "Mariage Elegance 2024",
+    image: "/gallery/event-recap.svg",
+    span: "lg:col-span-5"
   },
   {
-    slug: "event-recap",
-    category: "Evenementiel",
-    title: "Resume d'evenement et diffusion rapide",
-    summary:
-      "Couverture de conference ou lancement avec livraison exploitable dans les heures qui suivent l'evenement.",
-    deliverables: "Aftermovie, capsules, stories",
-    image: "/gallery/event-recap.svg"
+    slug: "coastal-series",
+    category: "Drone · Nature",
+    title: "Cote sauvage serie aerienne",
+    image: "/gallery/institution-report.svg",
+    span: "lg:col-span-5"
+  },
+  {
+    slug: "arts-festival",
+    category: "Festival",
+    title: "Festival des arts",
+    image: "/gallery/event-recap.svg",
+    span: "lg:col-span-4 lg:row-span-2"
+  },
+  {
+    slug: "prestige-residence",
+    category: "Immobilier",
+    title: "Residence Prestige",
+    image: "/gallery/brand-campaign.svg",
+    span: "lg:col-span-4 lg:row-span-2"
+  },
+  {
+    slug: "official-clip",
+    category: "Clip musical",
+    title: "Artiste clip officiel",
+    image: "/gallery/institution-report.svg",
+    span: "lg:col-span-4 lg:row-span-2"
   }
 ];
 
-export const processSteps = [
+export const droneModules = [
   {
     index: "01",
-    title: "Cadrage",
-    description: "Objectif, audience, ton, formats livrables et calendrier de production."
+    title: "Reglementation & securite",
+    description:
+      "Cadre legal du pilotage, espaces aeriens, protocoles de securite et gestion des risques."
   },
   {
     index: "02",
-    title: "Production",
-    description: "Preparation, captation, direction de prise de vue et gestion des sequences utiles."
+    title: "Pilotage fondamental",
+    description:
+      "Prise en main du drone, manoeuvres de base, decollage, atterrissage et vol stationnaire."
   },
   {
     index: "03",
-    title: "Livraison",
-    description: "Montage final, ajustements cibles et exports pour web, diffusion interne ou reseaux."
+    title: "Pilotage avance",
+    description:
+      "Trajectoires complexes, vol en conditions difficiles, retour automatique et gestion des pannes."
+  },
+  {
+    index: "04",
+    title: "Prise de vue aerienne",
+    description:
+      "Composition d'image en vol, reglages camera, mouvements cinematographiques et narration aerienne."
+  },
+  {
+    index: "05",
+    title: "Postproduction drone",
+    description:
+      "Traitement des rushes aeriens, etalonnage et integration dans un projet final exploitable."
+  }
+];
+
+export const pricingPlans = [
+  {
+    category: "Video",
+    name: "Essentiel",
+    price: "150K",
+    unit: "a partir de / projet",
+    features: [
+      "Captation demi-journee",
+      "Montage standard",
+      "1 livraison HD",
+      "2 revisions incluses",
+      "Delai 5 jours ouvres"
+    ]
+  },
+  {
+    category: "Video + Drone",
+    name: "Premium",
+    price: "350K",
+    unit: "a partir de / projet",
+    featured: true,
+    features: [
+      "Captation journee entiere",
+      "Prise de vue drone incluse",
+      "Montage cinematographique",
+      "Etalonnage colorimetrique",
+      "Habillage sonore",
+      "4 revisions incluses",
+      "Livraison 4K + HD"
+    ]
+  },
+  {
+    category: "Formation",
+    name: "Pilote pro",
+    price: "200K",
+    unit: "formation complete",
+    features: [
+      "5 modules complets",
+      "40h de formation",
+      "Pratique sur le terrain",
+      "Materiel fourni",
+      "Attestation de formation",
+      "Support continu"
+    ]
+  }
+];
+
+export const blogPosts = [
+  {
+    category: "Drone",
+    date: "12 Jan 2025",
+    title: "5 techniques de vol pour des plans cinematographiques plus propres",
+    excerpt:
+      "Comment stabiliser les trajectoires, anticiper les mouvements et rendre les plans aeriens plus utiles au montage.",
+    image: "/gallery/brand-campaign.svg",
+    large: true
+  },
+  {
+    category: "Tendances",
+    date: "8 Jan 2025",
+    title: "Pourquoi la video verticale compte encore en 2025",
+    excerpt:
+      "Le format vertical n'est pas une option secondaire. Il structure deja une partie de la diffusion des marques.",
+    image: "/gallery/event-recap.svg"
+  },
+  {
+    category: "Formation",
+    date: "2 Jan 2025",
+    title: "Ce qu'il faut savoir avant de piloter un drone",
+    excerpt:
+      "Reglementation, zones de vol, securite et bons reflexes avant toute prise de vue aerienne.",
+    image: "/gallery/institution-report.svg"
   }
 ];
 
@@ -132,8 +240,8 @@ export const faqs = [
       "Oui. Les livrables peuvent etre declines en formats verticaux, carres et horizontaux afin de rester coherents sur Instagram, Facebook, TikTok, YouTube ou un site web."
   },
   {
-    question: "Le studio travaille-t-il uniquement a Cotonou ?",
+    question: "La formation drone inclut-elle la pratique ?",
     answer:
-      "Le studio est base a Cotonou mais peut intervenir dans d'autres zones du Benin selon le perimetre du projet et les contraintes logistiques."
+      "Oui. Le parcours presente sur le site inclut la prise en main, la pratique terrain et la logique de production aerienne."
   }
 ];

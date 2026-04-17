@@ -1,8 +1,18 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
+import { ContactForm } from "@/components/contact-form";
 import { JsonLd } from "@/components/json-ld";
-import { faqs, processSteps, sectors, services, showcaseProjects, siteConfig } from "@/lib/site";
+import {
+  blogPosts,
+  droneModules,
+  faqs,
+  heroStats,
+  pricingPlans,
+  services,
+  showcaseProjects,
+  siteConfig
+} from "@/lib/site";
 
 const localBusinessJsonLd = {
   "@context": "https://schema.org",
@@ -12,7 +22,7 @@ const localBusinessJsonLd = {
   image: `${siteConfig.domain}/opengraph-image`,
   email: siteConfig.email,
   telephone: siteConfig.phoneDisplay,
-  sameAs: [siteConfig.whatsappHref, siteConfig.githubUrl],
+  sameAs: [siteConfig.whatsappApi, siteConfig.githubUrl],
   areaServed: ["Cotonou", "Abomey-Calavi", "Porto-Novo", "Benin"],
   address: {
     "@type": "PostalAddress",
@@ -39,379 +49,431 @@ const faqJsonLd = {
 
 export default function HomePage() {
   return (
-    <main id="top" className="relative overflow-hidden px-4 pb-16 pt-8 md:px-6">
+    <main id="main-content" className="relative overflow-hidden pt-24">
       <JsonLd data={localBusinessJsonLd} />
       <JsonLd data={faqJsonLd} />
 
-      <section className="section-pad mx-auto grid min-h-[100dvh] max-w-7xl items-center gap-8 md:grid-cols-[1.08fr_0.92fr]">
-        <div className="reveal">
-          <p className="eyebrow">Studio créatif et audiovisuel à Cotonou</p>
-          <h1 className="mt-5 max-w-[10.8ch] font-[family-name:var(--font-outfit)] text-5xl leading-none tracking-[-0.07em] text-[color:var(--foreground)] sm:text-6xl lg:text-[6rem]">
-            Des images qui installent une présence nette.
-          </h1>
-          <p className="text-muted mt-6 max-w-[64ch] text-base leading-8 md:text-lg">
-            Studio ALPHA PRODUCTION conçoit des productions vidéo et photo pour les marques,
-            institutions et organisateurs d&apos;événements qui doivent être vus clairement à
-            Cotonou. Le studio prend en charge la direction visuelle, la captation, le montage
-            et la déclinaison des livrables pour le web, les réseaux sociaux et la communication
-            terrain.
-          </p>
+      <section id="hero" className="relative flex min-h-[100dvh] items-center overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_45%,rgba(240,121,33,0.07)_0%,transparent_55%),radial-gradient(ellipse_at_15%_75%,rgba(45,45,181,0.08)_0%,transparent_50%),linear-gradient(160deg,#080808_0%,#0d0d0d_60%,#080808_100%)]" />
+        <div className="absolute inset-y-0 left-[56%] hidden w-px -skew-x-[6deg] bg-[linear-gradient(180deg,transparent,rgba(45,45,181,0.2),transparent)] lg:block" />
 
-          <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            <Link
-              href="#contact"
-              className="premium-transition inline-flex items-center justify-between rounded-full bg-[color:var(--foreground)] px-2 py-2 text-[#fbf3e8] shadow-[0_20px_42px_-26px_rgba(17,22,26,0.45)] hover:-translate-y-px active:scale-[0.98] sm:w-auto"
-            >
-              <span className="pl-5 pr-4 text-sm font-semibold md:text-base">
-                Parler du projet
+        <div className="relative z-10 mx-auto grid w-full max-w-[1400px] gap-10 px-4 py-20 md:px-6 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="reveal max-w-[860px]">
+            <div className="section-tag">Studio audiovisuel & formation drone</div>
+            <h1 className="mt-8 leading-[0.88]">
+              <span className="block font-[family-name:var(--font-serif)] text-[clamp(1.75rem,3vw,3rem)] font-light italic tracking-[0.25em] text-[color:var(--orange)]">
+                studio
               </span>
-              <span className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/12">
-                +
+              <span className="block font-[family-name:var(--font-display)] text-[clamp(5rem,12vw,9.25rem)] tracking-[0.08em] text-[color:var(--white)]">
+                ALPHA
               </span>
-            </Link>
-            <Link
-              href="#services"
-              className="premium-transition inline-flex items-center justify-center rounded-full border border-black/10 bg-white/45 px-6 py-4 text-sm font-semibold text-[color:var(--foreground)] hover:-translate-y-px hover:bg-white/65 active:scale-[0.98] md:text-base"
-            >
-              Voir les expertises
-            </Link>
-            <Link
-              href={siteConfig.whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              className="premium-transition inline-flex items-center justify-center rounded-full border border-black/10 bg-[color:var(--accent-soft)] px-6 py-4 text-sm font-semibold text-[color:var(--foreground)] hover:-translate-y-px hover:bg-[color:var(--accent-soft)]/80 active:scale-[0.98] md:text-base"
-            >
-              WhatsApp direct
-            </Link>
+              <span className="block font-[family-name:var(--font-display)] text-[clamp(2.4rem,6vw,4.75rem)] tracking-[0.2em] text-[color:var(--anthracite-light)]">
+                PRODUCTION
+              </span>
+            </h1>
+            <p className="mt-6 max-w-[32rem] font-[family-name:var(--font-serif)] text-[clamp(1rem,1.7vw,1.35rem)] italic leading-[1.8] text-[color:var(--gray-light)]">
+              Nous capturons ce que l&apos;oeil ne voit pas. Du sol jusqu&apos;au ciel,
+              chaque image raconte votre histoire avec une execution plus nette et plus
+              utile.
+            </p>
+
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <Link
+                href="#portfolio"
+                className="inline-flex items-center justify-center bg-[color:var(--orange)] px-8 py-4 text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--white)] transition-colors duration-300 hover:bg-[color:var(--orange-light)]"
+              >
+                Voir le portfolio
+              </Link>
+              <Link
+                href="#formation"
+                className="inline-flex items-center justify-center bg-[color:var(--indigo)] px-8 py-4 text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--white)] transition-colors duration-300 hover:bg-[color:var(--indigo-light)]"
+              >
+                Formation drone
+              </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--gray-light)] transition-colors duration-300 hover:text-[color:var(--orange)]"
+              >
+                Devis gratuit <span aria-hidden="true">→</span>
+              </Link>
+            </div>
           </div>
 
-          <div className="mt-9 grid gap-3 sm:grid-cols-3">
-            {[
-              "Production locale à Cotonou",
-              "Formats web, social et corporate",
-              "Direction, captation et postproduction"
-            ].map((item) => (
-              <div
-                key={item}
-                className="premium-transition rounded-[1.4rem] border border-black/6 bg-white/45 p-4 text-sm text-[color:var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]"
-              >
-                {item}
+          <div className="reveal reveal-delay-1 flex gap-8 self-end pb-2 sm:gap-11">
+            {heroStats.map((stat) => (
+              <div key={stat.label} className="min-w-[84px]">
+                <div className="font-[family-name:var(--font-display)] text-[2.5rem] leading-none text-[color:var(--orange)]">
+                  {stat.value}
+                </div>
+                <div className="mt-1 text-[9px] uppercase tracking-[0.22em] text-[color:var(--gray-light)]">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="reveal reveal-delay-1">
-          <div className="double-shell">
-            <div className="double-core relative overflow-hidden p-5 md:p-6">
-              <div className="grain-mask" />
-              <div className="grid gap-4 md:grid-cols-[1.05fr_0.95fr]">
-                <article className="rounded-[1.5rem] border border-black/7 bg-[color:var(--surface-strong)] p-5">
-                  <span className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                    Implantation
-                  </span>
-                  <h2 className="mt-4 max-w-full text-[2rem]">Cotonou, ancrage local.</h2>
-                  <p className="text-muted mt-4 text-sm leading-7">
-                    Une production plus réactive, plus lisible et mieux alignée avec le terrain.
-                  </p>
-                </article>
-
-                <article className="rounded-[1.5rem] border border-[color:var(--accent-soft)] bg-[linear-gradient(180deg,rgba(159,91,52,0.12),rgba(255,253,249,0.92))] p-5">
-                  <span className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                    Formats
-                  </span>
-                  <h2 className="mt-4 max-w-full text-[2rem]">Brand, event, social.</h2>
-                  <p className="text-muted mt-4 text-sm leading-7">
-                    Des livrables pensés pour les points de contact réellement utilisés.
-                  </p>
-                </article>
-
-                <article className="rounded-[1.5rem] border border-black/7 bg-[color:var(--surface-strong)] p-5 md:col-span-2">
-                  <span className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                    Approche
-                  </span>
-                  <h2 className="mt-4 max-w-full text-[2rem]">
-                    Préparer, capter, monter, livrer sans bruit inutile.
-                  </h2>
-                  <p className="text-muted mt-4 max-w-[58ch] text-sm leading-7">
-                    Le studio structure la production pour réduire les allers-retours et sécuriser
-                    le résultat final. L’objectif n’est pas de produire plus, mais de produire
-                    mieux pour la diffusion.
-                  </p>
-                </article>
-              </div>
-
-              <div className="mt-5 grid gap-2">
-                <span className="signal-line h-1.5 rounded-full bg-black/8" />
-                <span className="signal-line h-1.5 rounded-full bg-black/8 [animation-delay:180ms]" />
-                <span className="signal-line h-1.5 rounded-full bg-black/8 [animation-delay:360ms]" />
-              </div>
-            </div>
-          </div>
+        <div className="absolute bottom-8 left-4 hidden items-center gap-3 text-[9px] uppercase tracking-[0.3em] text-[color:var(--gray-mid)] md:flex md:left-6">
+          <span className="h-11 w-px bg-[linear-gradient(180deg,transparent,var(--indigo))]" />
+          Defiler pour decouvrir
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl pb-8">
-        <div className="reveal grid gap-6 md:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <p className="eyebrow">Présence locale, exécution propre</p>
-            <h2 className="mt-5 max-w-[15ch]">
-              Une vitrine visuelle crédible pour les structures qui doivent être vues clairement.
+      <section id="services" className="section-pad bg-[color:var(--dark)] px-4 md:px-6">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="reveal mb-16">
+            <div className="section-tag">Ce que nous faisons</div>
+            <h2 className="section-title mt-5">
+              NOS <span className="o">SER</span>
+              <span className="i">VICES</span>
             </h2>
+            <p className="section-desc mt-4">
+              De la captation au montage, du sol aux airs, une offre complete pour votre image.
+            </p>
           </div>
-          <div className="grid gap-4">
-            {[
-              "Entreprises, institutions et événements",
-              "Formats horizontaux, verticaux et diffusion web"
-            ].map((item) => (
-              <div key={item} className="double-shell">
-                <div className="double-core rounded-[calc(var(--radius-shell)-0.5rem)] bg-[color:var(--surface-strong)] p-5">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                    Couverture
-                  </p>
-                  <p className="mt-3 font-[family-name:var(--font-outfit)] text-xl tracking-[-0.04em]">
-                    {item}
-                  </p>
+
+          <div className="grid gap-px bg-white/5 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service, index) => (
+              <article
+                key={service.title}
+                className={`bg-[color:var(--dark)] p-10 transition-colors duration-300 hover:bg-[color:var(--dark2)] ${
+                  index < 3 ? "reveal" : "reveal reveal-delay-1"
+                }`}
+              >
+                <div className="font-[family-name:var(--font-display)] text-[3.25rem] leading-none text-[rgba(240,121,33,0.1)]">
+                  {service.index}
                 </div>
-              </div>
+                <h3 className="mt-4 font-[family-name:var(--font-display)] text-[1.65rem] uppercase tracking-[0.08em] text-white">
+                  {service.title}
+                </h3>
+                <p className="mt-4 text-sm leading-8 text-[color:var(--gray-light)]">
+                  {service.description}
+                </p>
+                <Link
+                  href={service.cta}
+                  className="mt-7 inline-flex items-center gap-3 text-[9px] uppercase tracking-[0.22em] text-[color:var(--orange)] transition-all duration-300 hover:gap-5"
+                >
+                  En savoir plus <span aria-hidden="true">→</span>
+                </Link>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="services" className="section-pad mx-auto max-w-7xl">
-        <div className="reveal max-w-3xl">
-          <p className="eyebrow">Services</p>
-          <h2 className="mt-5">
-            Une production pensée pour la visibilité, pas seulement pour l’esthétique.
-          </h2>
-        </div>
+      <section id="portfolio" className="section-pad bg-[color:var(--black)] px-4 md:px-6">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="reveal mb-10">
+            <div className="section-tag">Nos realisations</div>
+            <h2 className="section-title mt-5">
+              PORT<span className="o">FOL</span>
+              <span className="i">IO</span>
+            </h2>
+            <p className="section-desc mt-4">
+              Un apercu du travail du studio avec la tension visuelle du prototype que vous avez fourni.
+            </p>
+          </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="double-shell reveal">
-            <div className="double-core min-h-[28rem] bg-[linear-gradient(160deg,rgba(255,255,255,0.9),rgba(159,91,52,0.08))] p-7">
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                {services[0]?.index}
-              </p>
-              <div className="mt-28 max-w-lg">
-                <h3>{services[0]?.title}</h3>
-                <p className="text-muted mt-5 text-base leading-8">{services[0]?.description}</p>
+          <div className="reveal mb-10 flex flex-wrap gap-2">
+            {["Tout", "Corporate", "Evenements", "Drone", "Mariages", "Publicite"].map((filter, index) => (
+              <button
+                key={filter}
+                type="button"
+                className={`border px-4 py-2 text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${
+                  index === 0
+                    ? "border-[color:var(--orange)] text-[color:var(--orange)]"
+                    : "border-[color:var(--gray)] text-[color:var(--gray-light)] hover:border-[color:var(--orange)] hover:text-[color:var(--orange)]"
+                }`}
+              >
+                {filter}
+              </button>
+            ))}
+          </div>
+
+          <div className="grid auto-rows-[220px] grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-12">
+            {showcaseProjects.map((project, index) => (
+              <article
+                key={project.slug}
+                className={`group relative overflow-hidden bg-[color:var(--dark2)] ${
+                  project.span
+                } ${index < 3 ? "reveal" : "reveal reveal-delay-1"}`}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(8,8,8,0.92))]" />
+                <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6">
+                  <div className="mb-2 text-[9px] uppercase tracking-[0.22em] text-[color:var(--orange)]">
+                    {project.category}
+                  </div>
+                  <h3 className="font-[family-name:var(--font-display)] text-[1.2rem] uppercase tracking-[0.12em] text-white">
+                    {project.title}
+                  </h3>
+                </div>
+                <div className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[rgba(240,121,33,0.5)] bg-black/40 text-sm text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
+                  ▶
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="formation" className="section-pad relative overflow-hidden bg-[color:var(--dark)] px-4 md:px-6">
+        <div className="pointer-events-none absolute right-[-150px] top-[-150px] h-[500px] w-[500px] bg-[radial-gradient(circle,rgba(45,45,181,0.06)_0%,transparent_70%)]" />
+        <div className="mx-auto max-w-[1400px]">
+          <div className="reveal mb-16">
+            <div className="section-tag">Pilotage professionnel</div>
+            <h2 className="section-title mt-5">
+              FORMA<span className="o">TION</span>
+              <br />
+              <span className="i">DRONE</span>
+            </h2>
+            <p className="section-desc mt-4">
+              Maitrisez le ciel, du pilotage de base a la prise de vue aerienne professionnelle.
+            </p>
+          </div>
+
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div className="reveal">
+              <div className="relative border border-[rgba(45,45,181,0.18)] bg-[color:var(--dark2)] p-10">
+                <div className="absolute left-0 top-0 h-[2px] w-14 bg-[color:var(--indigo)]" />
+                <div className="absolute bottom-0 right-0 h-[2px] w-14 bg-[color:var(--orange)]" />
+                <div className="py-8 text-center font-[family-name:var(--font-display)] text-[5rem] leading-none text-[color:var(--orange)]">
+                  DRN
+                </div>
+                <div className="grid gap-px bg-white/5 sm:grid-cols-2">
+                  {[
+                    { value: "5", key: "Modules" },
+                    { value: "40h", key: "Formation" },
+                    { value: "100%", key: "Pratique incluse" },
+                    { value: "360", key: "Support continu" }
+                  ].map((item) => (
+                    <div key={item.key} className="bg-[color:var(--dark)] px-5 py-4">
+                      <div className="font-[family-name:var(--font-display)] text-[1.85rem] leading-none text-[color:var(--indigo-light)]">
+                        {item.value}
+                      </div>
+                      <div className="mt-1 text-[9px] uppercase tracking-[0.2em] text-[color:var(--gray-light)]">
+                        {item.key}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-8 inline-flex items-center gap-3 border border-[rgba(45,45,181,0.25)] bg-[rgba(45,45,181,0.09)] px-4 py-3 text-[10px] uppercase tracking-[0.22em] text-[color:var(--indigo-light)]">
+                Attestation de formation delivree
               </div>
             </div>
+
+            <div className="reveal reveal-delay-1">
+              {droneModules.map((module) => (
+                <div
+                  key={module.index}
+                  className="group flex gap-5 border-b border-white/5 py-6 transition-all duration-300 hover:border-[rgba(240,121,33,0.22)] hover:pl-3"
+                >
+                  <div className="min-w-[52px] font-[family-name:var(--font-display)] text-[2rem] leading-none text-[rgba(85,85,212,0.22)] transition-colors duration-300 group-hover:text-[color:var(--indigo-light)]">
+                    {module.index}
+                  </div>
+                  <div>
+                    <h3 className="font-[family-name:var(--font-display)] text-[1.1rem] uppercase tracking-[0.08em] text-white">
+                      {module.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-7 text-[color:var(--gray-light)]">
+                      {module.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+
+              <Link
+                href="#contact"
+                className="mt-9 inline-flex bg-[color:var(--indigo)] px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-[color:var(--white)] transition-colors duration-300 hover:bg-[color:var(--indigo-light)]"
+              >
+                S&apos;inscrire a la formation
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tarifs" className="section-pad bg-[color:var(--black)] px-4 md:px-6">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="reveal mb-16">
+            <div className="section-tag">Investissement</div>
+            <h2 className="section-title mt-5">
+              NOS <span className="o">TA</span>
+              <span className="i">RIFS</span>
+            </h2>
+            <p className="section-desc mt-4">
+              Des formules claires, sans surprise. Chaque projet peut etre personnalise sur devis.
+            </p>
           </div>
 
-          <div className="grid gap-5">
-            {services.slice(1).map((service, index) => (
-              <div
-                key={service.title}
-                className={`double-shell reveal ${index === 0 ? "reveal-delay-1" : index === 1 ? "reveal-delay-2" : "reveal-delay-3"}`}
+          <div className="grid gap-px bg-white/5 lg:grid-cols-3">
+            {pricingPlans.map((plan, index) => (
+              <article
+                key={plan.name}
+                className={`relative bg-[color:var(--black)] p-10 ${plan.featured ? "border-t-2 border-[color:var(--orange)] bg-[color:var(--dark2)]" : ""} ${
+                  index === 0 ? "reveal" : index === 1 ? "reveal reveal-delay-1" : "reveal reveal-delay-2"
+                }`}
               >
-                <div className="double-core bg-[color:var(--surface-strong)] p-6">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                    {service.index}
-                  </p>
-                  <h3 className="mt-4">{service.title}</h3>
-                  <p className="text-muted mt-4 text-base leading-8">{service.description}</p>
+                {plan.featured ? (
+                  <div className="absolute -top-[11px] left-1/2 -translate-x-1/2 bg-[color:var(--orange)] px-3 py-1 text-[8px] font-medium uppercase tracking-[0.28em] text-[color:var(--white)]">
+                    Populaire
+                  </div>
+                ) : null}
+                <div className="text-[9px] uppercase tracking-[0.3em] text-[color:var(--orange)]">
+                  {plan.category}
                 </div>
-              </div>
+                <h3 className="mt-3 font-[family-name:var(--font-display)] text-[1.8rem] uppercase tracking-[0.1em] text-white">
+                  {plan.name}
+                </h3>
+                <div className="mt-5 font-[family-name:var(--font-display)] text-[3.2rem] leading-none text-[color:var(--indigo-light)]">
+                  <span className="align-super text-[1.25rem]">XOF</span>
+                  {plan.price}
+                </div>
+                <div className="mt-1 text-[9px] uppercase tracking-[0.2em] text-[color:var(--gray-light)]">
+                  {plan.unit}
+                </div>
+                <ul className="mt-7 space-y-0">
+                  {plan.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-center gap-3 border-b border-white/4 py-2 text-sm text-[color:var(--gray-light)]"
+                    >
+                      <span className="text-[color:var(--orange)]">–</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="#contact"
+                  className={`mt-8 block border px-4 py-3 text-center text-[10px] uppercase tracking-[0.24em] transition-colors duration-300 ${
+                    plan.featured
+                      ? "border-[color:var(--orange)] bg-[color:var(--orange)] text-[color:var(--white)]"
+                      : "border-[color:var(--orange)] text-[color:var(--orange)] hover:bg-[color:var(--orange)] hover:text-[color:var(--white)]"
+                  }`}
+                >
+                  {plan.category === "Formation" ? "S'inscrire" : "Demander un devis"}
+                </Link>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="positionnement" className="section-pad mx-auto max-w-7xl">
-        <div className="reveal max-w-3xl">
-          <p className="eyebrow">Positionnement</p>
-          <h2 className="mt-5">
-            Des contenus utiles pour les marques et structures actives à {siteConfig.city}.
-          </h2>
-        </div>
+      <section id="blog" className="section-pad bg-[color:var(--dark)] px-4 md:px-6">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="reveal mb-16">
+            <div className="section-tag">Actualites & insights</div>
+            <h2 className="section-title mt-5">
+              LE <span className="o">BL</span>
+              <span className="i">OG</span>
+            </h2>
+            <p className="section-desc mt-4">
+              Conseils, tendances et coulisses du monde audiovisuel et du pilotage drone.
+            </p>
+          </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-[1.08fr_0.92fr_0.92fr]">
-          {sectors.map((sector, index) => (
-            <article
-              key={sector.title}
-              className={`double-shell reveal ${index === 1 ? "reveal-delay-1" : index === 2 ? "reveal-delay-2" : ""}`}
-            >
-              <div
-                className={`double-core bg-[linear-gradient(180deg,rgba(255,255,255,0.34),rgba(17,22,26,0.03))] p-6 ${
-                  index === 0 ? "min-h-[22rem]" : "min-h-[18rem]"
-                } flex flex-col justify-end`}
+          <div className="grid gap-1 lg:grid-cols-[1.5fr_1fr_1fr]">
+            {blogPosts.map((post, index) => (
+              <article
+                key={post.title}
+                className={`group overflow-hidden bg-[color:var(--dark2)] transition-colors duration-300 hover:bg-[color:var(--gray)] ${
+                  index === 0 ? "reveal" : index === 1 ? "reveal reveal-delay-1" : "reveal reveal-delay-2"
+                }`}
               >
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                  {sector.tag}
-                </p>
-                <h3 className="mt-4">{sector.title}</h3>
-                <p className="text-muted mt-4 text-base leading-8">{sector.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="realisations" className="section-pad mx-auto max-w-7xl">
-        <div className="reveal max-w-3xl">
-          <p className="eyebrow">Galerie</p>
-          <h2 className="mt-5">
-            Des mises en scene de projets pour presenter le type de rendu que le studio peut livrer.
-          </h2>
-          <p className="text-muted mt-5 max-w-[62ch] text-base leading-8">
-            Les visuels ci-dessous servent de galerie de presentation. Ils peuvent etre remplaces
-            par vos vraies productions des que vous me fournissez les assets finaux.
-          </p>
-        </div>
-
-        <div className="mt-10 grid gap-5 lg:grid-cols-[1.08fr_0.92fr_0.92fr]">
-          {showcaseProjects.map((project, index) => (
-            <article
-              key={project.slug}
-              className={`double-shell reveal ${index === 1 ? "reveal-delay-1" : index === 2 ? "reveal-delay-2" : ""}`}
-            >
-              <div className="double-core overflow-hidden bg-[color:var(--surface-strong)]">
-                <div className="relative aspect-[4/3] overflow-hidden border-b border-black/6">
+                <div className={`relative overflow-hidden ${post.large ? "h-[250px]" : "h-[210px]"}`}>
                   <Image
-                    src={project.image}
-                    alt={project.title}
+                    src={post.image}
+                    alt={post.title}
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 33vw"
-                    priority={index === 0}
                   />
                 </div>
                 <div className="p-6">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                    {project.category}
+                  <div className="text-[9px] uppercase tracking-[0.2em] text-[color:var(--orange)]">
+                    {post.category} <span className="text-[color:var(--gray-light)]">· {post.date}</span>
+                  </div>
+                  <h3 className="mt-3 font-[family-name:var(--font-display)] text-[1.2rem] uppercase tracking-[0.08em] text-white transition-colors duration-300 group-hover:text-[color:var(--orange)]">
+                    {post.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[color:var(--gray-light)]">
+                    {post.excerpt}
                   </p>
-                  <h3 className="mt-4">{project.title}</h3>
-                  <p className="text-muted mt-4 text-base leading-8">{project.summary}</p>
-                  <p className="mt-5 text-sm font-semibold uppercase tracking-[0.16em] text-[color:var(--foreground)]/72">
-                    {project.deliverables}
-                  </p>
+                  <Link
+                    href="#contact"
+                    className="mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.22em] text-[color:var(--orange)] transition-all duration-300 hover:gap-4"
+                  >
+                    Lire l&apos;article <span aria-hidden="true">→</span>
+                  </Link>
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="processus" className="section-pad mx-auto max-w-7xl">
-        <div className="reveal max-w-3xl">
-          <p className="eyebrow">Méthode</p>
-          <h2 className="mt-5">Un processus simple pour cadrer le besoin et tenir la livraison.</h2>
-        </div>
-
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {processSteps.map((step, index) => (
-            <article
-              key={step.title}
-              className={`double-shell reveal ${index === 1 ? "reveal-delay-1" : index === 2 ? "reveal-delay-2" : ""}`}
-            >
-              <div className="double-core min-h-[16rem] bg-[color:var(--surface-strong)] p-6">
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                  {step.index}
-                </p>
-                <h3 className="mt-8">{step.title}</h3>
-                <p className="text-muted mt-4 text-base leading-8">{step.description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl pb-6">
-        <div className="double-shell reveal">
-          <div className="double-core grid gap-6 p-7 md:grid-cols-[1fr_0.75fr]">
-            <div>
-              <p className="eyebrow">SEO local</p>
-              <h2 className="mt-5 max-w-[16ch]">
-                Studio de production audiovisuelle à {siteConfig.city}, disponible pour les besoins
-                de communication au {siteConfig.country}.
-              </h2>
-            </div>
-            <p className="text-muted max-w-[60ch] text-base leading-8">
-              La page a été structurée pour répondre aux recherches liées à la production vidéo,
-              à la captation événementielle, au studio photo et au montage à Cotonou. Les contenus,
-              les métadonnées et les données structurées renforcent ce positionnement local.
-            </p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="faq" className="section-pad mx-auto max-w-7xl">
-        <div className="reveal max-w-3xl">
-          <p className="eyebrow">FAQ</p>
-          <h2 className="mt-5">Questions fréquentes</h2>
+      <section id="contact" className="section-pad relative overflow-hidden bg-[color:var(--black)] px-4 md:px-6">
+        <div className="pointer-events-none absolute right-[-70px] top-1/2 hidden -translate-y-1/2 rotate-90 font-[family-name:var(--font-display)] text-[170px] tracking-[0.12em] text-[rgba(240,121,33,0.03)] xl:block">
+          ALPHA
         </div>
+        <div className="mx-auto grid max-w-[1400px] gap-14 lg:grid-cols-2">
+          <div className="reveal">
+            <h2 className="font-[family-name:var(--font-display)] text-[clamp(2.5rem,4.5vw,3.75rem)] leading-[0.92] tracking-[0.08em] text-white">
+              DONNONS VIE
+              <br />
+              A VOTRE <span className="o text-[color:var(--orange)]">VI</span>
+              <span className="i text-[color:var(--indigo-light)]">SION</span>
+            </h2>
+            <p className="mt-5 max-w-[34rem] font-[family-name:var(--font-serif)] text-[1rem] italic leading-[1.9] text-[color:var(--gray-light)]">
+              Un projet en tete ? Une formation qui vous interesse ? Parlons-en. Le studio
+              repond et bascule votre demande vers le bon canal rapidement.
+            </p>
 
-        <div className="mt-10 grid gap-4">
-          {faqs.map((faq, index) => (
-            <details
-              key={faq.question}
-              className={`double-shell reveal group ${index === 1 ? "reveal-delay-1" : index === 2 ? "reveal-delay-2" : ""}`}
-              open={index === 0}
-            >
-              <summary className="double-core cursor-pointer list-none p-6 font-[family-name:var(--font-outfit)] text-xl tracking-[-0.04em] marker:hidden">
-                <span className="flex items-center justify-between gap-4">
-                  <span>{faq.question}</span>
-                  <span className="premium-transition text-[color:var(--accent)] group-open:rotate-45">
-                    +
-                  </span>
-                </span>
-              </summary>
-              <div className="px-6 pb-6 pt-2 text-base leading-8 text-[color:var(--muted)]">
-                {faq.answer}
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      <section id="contact" className="section-pad mx-auto max-w-7xl">
-        <div className="double-shell reveal">
-          <div className="double-core grid gap-8 p-7 md:grid-cols-[1fr_0.78fr]">
-            <div>
-              <p className="eyebrow">Contact</p>
-              <h2 className="mt-5 max-w-[16ch]">
-                Présentez le besoin et le studio revient avec un cadrage clair.
-              </h2>
-              <p className="text-muted mt-5 max-w-[60ch] text-base leading-8">
-                Le site integre maintenant les coordonnees d'appel et un acces WhatsApp direct.
-                Le domaine de production reste a mettre a jour dans la configuration des que le
-                deploiement Vercel ou le domaine final est valide.
-              </p>
+            <div className="mt-10 space-y-5">
+              {[
+                { label: "Telephone", value: siteConfig.phoneDisplay },
+                { label: "Email", value: siteConfig.email },
+                { label: "Localisation", value: `${siteConfig.city}, ${siteConfig.country}` }
+              ].map((item) => (
+                <div key={item.label} className="flex items-start gap-4">
+                  <div className="mt-1 h-3 w-3 rounded-full bg-[color:var(--orange)]" />
+                  <div>
+                    <div className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--gray-light)]">
+                      {item.label}
+                    </div>
+                    <div className="mt-1 text-base text-white">{item.value}</div>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="grid content-start gap-4">
-              <Link
-                href={`mailto:${siteConfig.email}`}
-                className="premium-transition inline-flex items-center justify-between rounded-[1.6rem] bg-[color:var(--foreground)] px-4 py-4 text-[#fbf3e8] shadow-[0_20px_42px_-26px_rgba(17,22,26,0.45)] hover:-translate-y-px active:scale-[0.98]"
-              >
-                <span className="pr-4 font-semibold">{siteConfig.email}</span>
-                <span className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/12">
-                  @
-                </span>
-              </Link>
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
               <Link
                 href={`tel:${siteConfig.phoneHref}`}
-                className="premium-transition inline-flex items-center justify-between rounded-[1.6rem] border border-black/10 bg-white/45 px-4 py-4 text-[color:var(--foreground)] hover:-translate-y-px hover:bg-white/65 active:scale-[0.98]"
+                className="inline-flex items-center justify-between border border-[color:var(--orange)] px-5 py-4 text-[11px] uppercase tracking-[0.22em] text-[color:var(--orange)] transition-colors duration-300 hover:bg-[color:var(--orange)] hover:text-[color:var(--white)]"
               >
-                <span className="font-semibold">{siteConfig.phoneDisplay}</span>
-                <span className="text-sm uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                  Appel
-                </span>
+                Appeler <span aria-hidden="true">→</span>
               </Link>
               <Link
-                href={siteConfig.whatsappHref}
+                href={siteConfig.whatsappApi}
                 target="_blank"
                 rel="noreferrer"
-                className="premium-transition inline-flex items-center justify-between rounded-[1.6rem] border border-black/10 bg-[color:var(--accent-soft)] px-4 py-4 text-[color:var(--foreground)] hover:-translate-y-px hover:bg-[color:var(--accent-soft)]/80 active:scale-[0.98]"
+                className="inline-flex items-center justify-between border border-[color:var(--indigo)] px-5 py-4 text-[11px] uppercase tracking-[0.22em] text-[color:var(--indigo-light)] transition-colors duration-300 hover:bg-[color:var(--indigo)] hover:text-[color:var(--white)]"
               >
-                <span className="font-semibold">{siteConfig.whatsappDisplay}</span>
-                <span className="text-sm uppercase tracking-[0.18em] text-[color:var(--accent)]">
-                  WhatsApp
-                </span>
+                WhatsApp <span aria-hidden="true">→</span>
               </Link>
             </div>
+          </div>
+
+          <div className="reveal reveal-delay-1">
+            <ContactForm />
           </div>
         </div>
       </section>
