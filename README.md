@@ -39,7 +39,30 @@ npm start
 
 Le projet est pret pour un deploiement sur Vercel.
 
-Apres attribution du domaine final, mettre a jour `domain` dans `lib/site.ts` afin d'aligner :
+## Variables d'environnement
+
+Copier `.env.example` vers `.env.local` en local si vous voulez forcer l'URL canonique :
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://studio-alpha-production.vercel.app
+```
+
+Sur Vercel, definir `NEXT_PUBLIC_SITE_URL` avec :
+
+- l'URL Vercel de production, ou
+- le domaine final personnalise
+
+Le projet sait aussi retomber automatiquement sur `VERCEL_PROJECT_PRODUCTION_URL` ou `VERCEL_URL`, mais `NEXT_PUBLIC_SITE_URL` reste la source la plus propre pour le SEO.
+
+## Deploiement Vercel
+
+1. Importer le depot GitHub `SenaDev007/Studio-ALPHA-PRODUCTION` dans Vercel.
+2. Laisser Vercel detecter `Next.js`.
+3. Ajouter la variable d'environnement `NEXT_PUBLIC_SITE_URL`.
+4. Lancer le premier deploiement.
+5. Si vous ajoutez un domaine personnalise, mettre a jour la meme variable avec ce domaine.
+
+Les elements SEO suivants s'aligneront alors automatiquement :
 
 - canonical URL
 - Open Graph

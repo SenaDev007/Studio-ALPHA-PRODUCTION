@@ -1,9 +1,19 @@
+const rawSiteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  process.env.VERCEL_PROJECT_PRODUCTION_URL ||
+  process.env.VERCEL_URL ||
+  "localhost:3000";
+
+const normalizedSiteUrl = rawSiteUrl.startsWith("http")
+  ? rawSiteUrl
+  : `https://${rawSiteUrl}`;
+
 export const siteConfig = {
   name: "Studio ALPHA PRODUCTION",
   shortName: "ALPHA PRODUCTION",
   description:
     "Studio ALPHA PRODUCTION accompagne les marques, institutions et evenements a Cotonou avec une production audiovisuelle structuree, sobre et pensee pour la visibilite.",
-  domain: "https://studio-alpha-production.com",
+  domain: normalizedSiteUrl.replace(/\/$/, ""),
   email: "contact@studio-alpha-production.com",
   phoneDisplay: "+229 01 67 06 09 77",
   phoneHref: "+2290167060977",
@@ -17,27 +27,27 @@ export const siteConfig = {
 export const services = [
   {
     index: "01",
-    title: "Production vidéo",
+    title: "Production video",
     description:
       "Films corporate, interviews, teasers et formats courts pour les entreprises, structures publiques et marques locales."
   },
   {
     index: "02",
-    title: "Captation événementielle",
+    title: "Captation evenementielle",
     description:
-      "Couverture de conférences, cérémonies, lancements et activations avec livrables adaptés à la diffusion rapide."
+      "Couverture de conferences, ceremonies, lancements et activations avec livrables adaptes a la diffusion rapide."
   },
   {
     index: "03",
     title: "Photographie professionnelle",
     description:
-      "Portraits, reportages, produits et images de communication utilisables sur site web, dossier ou réseaux sociaux."
+      "Portraits, reportages, produits et images de communication utilisables sur site web, dossier ou reseaux sociaux."
   },
   {
     index: "04",
     title: "Montage et postproduction",
     description:
-      "Assemblage, étalonnage, sous-titrage et déclinaisons verticales, carrées ou horizontales selon le canal."
+      "Assemblage, etalonnage, sous-titrage et declinaisons verticales, carrees ou horizontales selon le canal."
   }
 ];
 
@@ -46,19 +56,19 @@ export const sectors = [
     tag: "Marques",
     title: "Lancement de produit et image de marque",
     description:
-      "Concevoir des contenus courts qui clarifient l’offre, soutiennent la distribution et améliorent la présence digitale."
+      "Concevoir des contenus courts qui clarifient l'offre, soutiennent la distribution et ameliorent la presence digitale."
   },
   {
     tag: "Institutionnel",
-    title: "Communication d’organisation",
+    title: "Communication d'organisation",
     description:
-      "Documenter les actions, les équipes et les résultats dans un langage visuel cohérent et plus crédible."
+      "Documenter les actions, les equipes et les resultats dans un langage visuel coherent et plus credible."
   },
   {
-    tag: "Événement",
-    title: "Captation et récapitulatif",
+    tag: "Evenement",
+    title: "Captation et recapitulatif",
     description:
-      "Étendre la portée d’un événement avec des résumés rapides, des interviews et des déclinaisons réseaux."
+      "Etendre la portee d'un evenement avec des resumes rapides, des interviews et des declinaisons reseaux."
   }
 ];
 
@@ -101,12 +111,12 @@ export const processSteps = [
   {
     index: "02",
     title: "Production",
-    description: "Préparation, captation, direction de prise de vue et gestion des séquences utiles."
+    description: "Preparation, captation, direction de prise de vue et gestion des sequences utiles."
   },
   {
     index: "03",
     title: "Livraison",
-    description: "Montage final, ajustements ciblés et exports pour web, diffusion interne ou réseaux."
+    description: "Montage final, ajustements cibles et exports pour web, diffusion interne ou reseaux."
   }
 ];
 
@@ -114,16 +124,16 @@ export const faqs = [
   {
     question: "Quels types de clients accompagne Studio ALPHA PRODUCTION ?",
     answer:
-      "Le studio intervient pour les entreprises, institutions, associations, artistes et organisateurs d’événements basés à Cotonou ou au Bénin."
+      "Le studio intervient pour les entreprises, institutions, associations, artistes et organisateurs d'evenements bases a Cotonou ou au Benin."
   },
   {
-    question: "Les contenus peuvent-ils être adaptés aux réseaux sociaux ?",
+    question: "Les contenus peuvent-ils etre adaptes aux reseaux sociaux ?",
     answer:
-      "Oui. Les livrables peuvent être déclinés en formats verticaux, carrés et horizontaux afin de rester cohérents sur Instagram, Facebook, TikTok, YouTube ou un site web."
+      "Oui. Les livrables peuvent etre declines en formats verticaux, carres et horizontaux afin de rester coherents sur Instagram, Facebook, TikTok, YouTube ou un site web."
   },
   {
-    question: "Le studio travaille-t-il uniquement à Cotonou ?",
+    question: "Le studio travaille-t-il uniquement a Cotonou ?",
     answer:
-      "Le studio est basé à Cotonou mais peut intervenir dans d’autres zones du Bénin selon le périmètre du projet et les contraintes logistiques."
+      "Le studio est base a Cotonou mais peut intervenir dans d'autres zones du Benin selon le perimetre du projet et les contraintes logistiques."
   }
 ];
