@@ -1,21 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  AirplaneTilt,
   ArrowRight,
   Broadcast,
   Camera,
-  Drone,
   EnvelopeSimple,
   GraduationCap,
   MapPin,
   PhoneCall,
-  Play,
   SlidersHorizontal,
   VideoCamera
 } from "@phosphor-icons/react/dist/ssr";
 
 import { ContactForm } from "@/components/contact-form";
 import { JsonLd } from "@/components/json-ld";
+import { LeadActions } from "@/components/lead-actions";
+import { PortfolioGrid } from "@/components/portfolio-grid";
 import {
   blogPosts,
   droneModules,
@@ -24,7 +25,6 @@ import {
   media,
   pricingPlans,
   services,
-  showcaseProjects,
   siteConfig
 } from "@/lib/site";
 
@@ -62,9 +62,9 @@ const faqJsonLd = {
 };
 
 const serviceIcons = {
+  AirplaneTilt,
   Broadcast,
   Camera,
-  Drone,
   GraduationCap,
   SlidersHorizontal,
   VideoCamera
@@ -77,21 +77,26 @@ export default function HomePage() {
       <JsonLd data={faqJsonLd} />
 
       <section id="hero" className="relative flex min-h-[100dvh] items-center overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_45%,rgba(240,121,33,0.07)_0%,transparent_55%),radial-gradient(ellipse_at_15%_75%,rgba(45,45,181,0.08)_0%,transparent_50%),linear-gradient(160deg,#080808_0%,#0d0d0d_60%,#080808_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_45%,rgba(240,121,33,0.08)_0%,transparent_55%),radial-gradient(ellipse_at_15%_75%,rgba(45,45,181,0.10)_0%,transparent_50%),linear-gradient(160deg,#080808_0%,#0d0d0d_60%,#080808_100%)]" />
+        <div className="hero-spotlight absolute inset-x-[8%] top-[-18%] h-[36rem] rounded-full blur-3xl" />
         <Image
           src={media.hero}
           alt="Equipe de captation video en direct dans un environnement de production professionnel"
           fill
           priority
-          className="object-cover object-center opacity-30"
+          className="object-cover object-center opacity-28"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.92)_0%,rgba(8,8,8,0.72)_48%,rgba(8,8,8,0.45)_100%)]" />
-        <div className="absolute inset-y-0 left-[56%] hidden w-px -skew-x-[6deg] bg-[linear-gradient(180deg,transparent,rgba(45,45,181,0.2),transparent)] lg:block" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.92)_0%,rgba(8,8,8,0.72)_48%,rgba(8,8,8,0.52)_100%)]" />
+        <div className="absolute inset-y-0 left-[56%] hidden w-px -skew-x-[6deg] bg-[linear-gradient(180deg,transparent,rgba(45,45,181,0.24),transparent)] lg:block" />
 
-        <div className="relative z-10 mx-auto grid w-full max-w-[1400px] gap-10 px-4 py-20 md:px-6 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div className="reveal max-w-[860px]">
-            <div className="section-tag">Studio audiovisuel & formation drone</div>
+        <div className="relative z-10 mx-auto grid w-full max-w-[1400px] gap-12 px-4 py-20 md:px-6 lg:grid-cols-[1fr_24rem] lg:items-end">
+          <div className="reveal max-w-[880px]">
+            <div className="hero-badge inline-flex items-center gap-3 rounded-full px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-white">
+              <span className="h-2 w-2 rounded-full bg-[color:var(--orange)]" />
+              Studio audiovisuel & formation drone
+            </div>
+
             <h1 className="mt-8 leading-[0.88]">
               <span className="block font-[family-name:var(--font-serif)] text-[clamp(1.75rem,3vw,3rem)] font-light italic tracking-[0.25em] text-[color:var(--orange)]">
                 studio
@@ -103,51 +108,69 @@ export default function HomePage() {
                 PRODUCTION
               </span>
             </h1>
-            <p className="mt-6 max-w-[32rem] font-[family-name:var(--font-serif)] text-[clamp(1rem,1.7vw,1.35rem)] italic leading-[1.8] text-[color:var(--gray-light)]">
+
+            <p className="mt-6 max-w-[34rem] font-[family-name:var(--font-serif)] text-[clamp(1rem,1.7vw,1.35rem)] italic leading-[1.8] text-[color:var(--gray-light)]">
               Nous capturons ce que l&apos;oeil ne voit pas. Du sol jusqu&apos;au ciel,
-              chaque image raconte votre histoire avec une execution plus nette et plus
-              utile.
+              chaque image raconte votre histoire avec une execution plus nette et plus utile.
             </p>
 
             <div className="mt-12 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
               <Link
                 href="#portfolio"
-                className="inline-flex items-center justify-center bg-[color:var(--orange)] px-8 py-4 text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--white)] transition-colors duration-300 hover:bg-[color:var(--orange-light)]"
+                className="hero-primary-button inline-flex items-center justify-center rounded-full px-8 py-4 text-[11px] font-medium uppercase tracking-[0.24em] text-white"
               >
                 Voir le portfolio
               </Link>
               <Link
-                href="#formation"
-                className="inline-flex items-center justify-center bg-[color:var(--indigo)] px-8 py-4 text-[11px] font-medium uppercase tracking-[0.24em] text-[color:var(--white)] transition-colors duration-300 hover:bg-[color:var(--indigo-light)]"
+                href="/?project=Formation%20drone&intent=inscription#contact"
+                className="hero-secondary-button inline-flex items-center justify-center rounded-full px-8 py-4 text-[11px] font-medium uppercase tracking-[0.24em] text-white"
               >
                 Formation drone
               </Link>
               <Link
-                href="#contact"
+                href="/?project=Forfait%20sur%20mesure&intent=devis#contact"
                 className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--gray-light)] transition-colors duration-300 hover:text-[color:var(--orange)]"
               >
-                Devis gratuit <ArrowRight size={14} aria-hidden="true" />
+                Devis gratuit
+                <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>
 
-          <div className="reveal reveal-delay-1 flex gap-8 self-end pb-2 sm:gap-11">
-            {heroStats.map((stat) => (
-              <div key={stat.label} className="min-w-[84px]">
-                <div className="font-[family-name:var(--font-display)] text-[2.5rem] leading-none text-[color:var(--orange)]">
-                  {stat.value}
-                </div>
-                <div className="mt-1 text-[9px] uppercase tracking-[0.22em] text-[color:var(--gray-light)]">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          <div className="reveal reveal-delay-1">
+            <div className="hero-glass-panel rounded-[2rem] p-5">
+              <p className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--orange)]">
+                Demarrer un workflow
+              </p>
+              <h2 className="mt-4 font-[family-name:var(--font-display)] text-[2rem] uppercase tracking-[0.08em] text-white">
+                Devis ou inscription
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-white/74">
+                Les actions du site ouvrent de vrais parcours pre-remplis. Vous pouvez lancer un devis
+                ou une inscription sans passer par des boutons decoratifs.
+              </p>
+              <LeadActions mode="quote" />
+              <LeadActions mode="training" />
+            </div>
           </div>
         </div>
 
         <div className="absolute bottom-8 left-4 hidden items-center gap-3 text-[9px] uppercase tracking-[0.3em] text-[color:var(--gray-mid)] md:flex md:left-6">
           <span className="h-11 w-px bg-[linear-gradient(180deg,transparent,var(--indigo))]" />
           Defiler pour decouvrir
+        </div>
+
+        <div className="absolute bottom-8 right-4 hidden gap-8 md:flex md:right-6 xl:right-12">
+          {heroStats.map((stat) => (
+            <div key={stat.label} className="hero-stat-pill rounded-full px-5 py-4">
+              <div className="font-[family-name:var(--font-display)] text-[2rem] leading-none text-[color:var(--orange)]">
+                {stat.value}
+              </div>
+              <div className="mt-1 text-[9px] uppercase tracking-[0.22em] text-[color:var(--gray-light)]">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -164,51 +187,50 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid gap-px bg-white/5 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((service, index) => (
-              (() => {
-                const ServiceIcon =
-                  serviceIcons[service.icon as keyof typeof serviceIcons] || VideoCamera;
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service, index) => {
+              const ServiceIcon =
+                serviceIcons[service.icon as keyof typeof serviceIcons] || VideoCamera;
 
-                return (
-                  <article
-                key={service.title}
-                className={`bg-[color:var(--dark)] p-10 transition-colors duration-300 hover:bg-[color:var(--dark2)] ${
-                  index < 3 ? "reveal" : "reveal reveal-delay-1"
-                }`}
-              >
-                <div className="relative mb-6 aspect-[16/10] overflow-hidden border border-white/6">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1280px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(8,8,8,0.58))]" />
-                  <div className="absolute left-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/35 text-[color:var(--orange)] backdrop-blur-sm">
-                    <ServiceIcon size={22} weight="light" />
-                  </div>
-                </div>
-                <div className="font-[family-name:var(--font-display)] text-[3.25rem] leading-none text-[rgba(240,121,33,0.1)]">
-                  {service.index}
-                </div>
-                <h3 className="mt-4 font-[family-name:var(--font-display)] text-[1.65rem] uppercase tracking-[0.08em] text-white">
-                  {service.title}
-                </h3>
-                <p className="mt-4 text-sm leading-8 text-[color:var(--gray-light)]">
-                  {service.description}
-                </p>
-                <Link
-                  href={service.cta}
-                  className="mt-7 inline-flex items-center gap-3 text-[9px] uppercase tracking-[0.22em] text-[color:var(--orange)] transition-all duration-300 hover:gap-5"
+              return (
+                <article
+                  key={service.title}
+                  className={`hero-glass-panel rounded-[2rem] p-5 transition-transform duration-300 hover:-translate-y-1 ${
+                    index < 3 ? "reveal" : "reveal reveal-delay-1"
+                  }`}
                 >
-                  En savoir plus <ArrowRight size={14} aria-hidden="true" />
-                </Link>
-                  </article>
-                );
-              })()
-            ))}
+                  <div className="relative mb-6 aspect-[16/10] overflow-hidden rounded-[1.4rem] border border-white/8">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1280px) 100vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(8,8,8,0.62))]" />
+                    <div className="absolute left-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/35 text-[color:var(--orange)] backdrop-blur-sm">
+                      <ServiceIcon size={22} weight="light" />
+                    </div>
+                  </div>
+                  <div className="font-[family-name:var(--font-display)] text-[3.25rem] leading-none text-[rgba(240,121,33,0.1)]">
+                    {service.index}
+                  </div>
+                  <h3 className="mt-4 font-[family-name:var(--font-display)] text-[1.65rem] uppercase tracking-[0.08em] text-white">
+                    {service.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-8 text-[color:var(--gray-light)]">
+                    {service.description}
+                  </p>
+                  <Link
+                    href={service.cta}
+                    className="mt-7 inline-flex items-center gap-3 text-[9px] uppercase tracking-[0.22em] text-[color:var(--orange)] transition-all duration-300 hover:gap-5"
+                  >
+                    En savoir plus
+                    <ArrowRight size={14} aria-hidden="true" />
+                  </Link>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -222,56 +244,12 @@ export default function HomePage() {
               <span className="i">IO</span>
             </h2>
             <p className="section-desc mt-4">
-              Un apercu du travail du studio avec la tension visuelle du prototype que vous avez fourni.
+              Le filtre fonctionne et chaque vignette renvoie vers un workflow de devis coherent avec
+              le type de realisation affiche.
             </p>
           </div>
 
-          <div className="reveal mb-10 flex flex-wrap gap-2">
-            {["Tout", "Corporate", "Evenements", "Drone", "Mariages", "Publicite"].map((filter, index) => (
-              <button
-                key={filter}
-                type="button"
-                className={`border px-4 py-2 text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 ${
-                  index === 0
-                    ? "border-[color:var(--orange)] text-[color:var(--orange)]"
-                    : "border-[color:var(--gray)] text-[color:var(--gray-light)] hover:border-[color:var(--orange)] hover:text-[color:var(--orange)]"
-                }`}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-
-          <div className="grid auto-rows-[220px] grid-cols-1 gap-1 md:grid-cols-2 lg:grid-cols-12">
-            {showcaseProjects.map((project, index) => (
-              <article
-                key={project.slug}
-                className={`group relative overflow-hidden bg-[color:var(--dark2)] ${
-                  project.span
-                } ${index < 3 ? "reveal" : "reveal reveal-delay-1"}`}
-              >
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(8,8,8,0.92))]" />
-                <div className="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6">
-                  <div className="mb-2 text-[9px] uppercase tracking-[0.22em] text-[color:var(--orange)]">
-                    {project.category}
-                  </div>
-                  <h3 className="font-[family-name:var(--font-display)] text-[1.2rem] uppercase tracking-[0.12em] text-white">
-                    {project.title}
-                  </h3>
-                </div>
-                <div className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[rgba(240,121,33,0.5)] bg-black/40 text-sm text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                  <Play size={18} weight="fill" />
-                </div>
-              </article>
-            ))}
-          </div>
+          <PortfolioGrid />
         </div>
       </section>
 
@@ -292,28 +270,28 @@ export default function HomePage() {
 
           <div className="grid gap-12 lg:grid-cols-2">
             <div className="reveal">
-              <div className="relative border border-[rgba(45,45,181,0.18)] bg-[color:var(--dark2)] p-10">
+              <div className="hero-glass-panel relative rounded-[2rem] p-10">
                 <Image
                   src={media.dronePilot}
                   alt="Pilote de drone en situation de prise de vue aerienne"
                   fill
-                  className="object-cover opacity-20"
+                  className="rounded-[2rem] object-cover opacity-20"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,14,14,0.35),rgba(14,14,14,0.92))]" />
+                <div className="absolute inset-0 rounded-[2rem] bg-[linear-gradient(180deg,rgba(14,14,14,0.35),rgba(14,14,14,0.92))]" />
                 <div className="absolute left-0 top-0 h-[2px] w-14 bg-[color:var(--indigo)]" />
                 <div className="absolute bottom-0 right-0 h-[2px] w-14 bg-[color:var(--orange)]" />
                 <div className="relative py-8 text-center font-[family-name:var(--font-display)] text-[5rem] leading-none text-[color:var(--orange)]">
                   DRN
                 </div>
-                <div className="relative grid gap-px bg-white/5 sm:grid-cols-2">
+                <div className="relative grid gap-3 sm:grid-cols-2">
                   {[
                     { value: "5", key: "Modules" },
                     { value: "40h", key: "Formation" },
                     { value: "100%", key: "Pratique incluse" },
                     { value: "360", key: "Support continu" }
                   ].map((item) => (
-                    <div key={item.key} className="bg-[color:var(--dark)] px-5 py-4">
+                    <div key={item.key} className="rounded-[1.25rem] border border-white/8 bg-black/30 px-5 py-4 backdrop-blur-sm">
                       <div className="font-[family-name:var(--font-display)] text-[1.85rem] leading-none text-[color:var(--indigo-light)]">
                         {item.value}
                       </div>
@@ -324,7 +302,7 @@ export default function HomePage() {
                   ))}
                 </div>
               </div>
-              <div className="mt-8 inline-flex items-center gap-3 border border-[rgba(45,45,181,0.25)] bg-[rgba(45,45,181,0.09)] px-4 py-3 text-[10px] uppercase tracking-[0.22em] text-[color:var(--indigo-light)]">
+              <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-[rgba(45,45,181,0.25)] bg-[rgba(45,45,181,0.09)] px-4 py-3 text-[10px] uppercase tracking-[0.22em] text-[color:var(--indigo-light)]">
                 Attestation de formation delivree
               </div>
             </div>
@@ -350,8 +328,8 @@ export default function HomePage() {
               ))}
 
               <Link
-                href="#contact"
-                className="mt-9 inline-flex bg-[color:var(--indigo)] px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-[color:var(--white)] transition-colors duration-300 hover:bg-[color:var(--indigo-light)]"
+                href="/?project=Formation%20drone&intent=inscription#contact"
+                className="hero-secondary-button mt-9 inline-flex rounded-full px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-[color:var(--white)]"
               >
                 S&apos;inscrire a la formation
               </Link>
@@ -369,20 +347,22 @@ export default function HomePage() {
               <span className="i">RIFS</span>
             </h2>
             <p className="section-desc mt-4">
-              Des formules claires, sans surprise. Chaque projet peut etre personnalise sur devis.
+              Les cartes tarifaires ouvrent des demandes pre-remplies. Aucun bouton mort.
             </p>
           </div>
 
-          <div className="grid gap-px bg-white/5 lg:grid-cols-3">
+          <div className="grid gap-4 lg:grid-cols-3">
             {pricingPlans.map((plan, index) => (
               <article
                 key={plan.name}
-                className={`relative bg-[color:var(--black)] p-10 ${plan.featured ? "border-t-2 border-[color:var(--orange)] bg-[color:var(--dark2)]" : ""} ${
+                className={`hero-glass-panel relative rounded-[2rem] p-10 ${
+                  plan.featured ? "border-[color:var(--orange)]/30" : ""
+                } ${
                   index === 0 ? "reveal" : index === 1 ? "reveal reveal-delay-1" : "reveal reveal-delay-2"
                 }`}
               >
                 {plan.featured ? (
-                  <div className="absolute -top-[11px] left-1/2 -translate-x-1/2 bg-[color:var(--orange)] px-3 py-1 text-[8px] font-medium uppercase tracking-[0.28em] text-[color:var(--white)]">
+                  <div className="absolute -top-[11px] left-1/2 -translate-x-1/2 rounded-full bg-[color:var(--orange)] px-3 py-1 text-[8px] font-medium uppercase tracking-[0.28em] text-[color:var(--white)]">
                     Populaire
                   </div>
                 ) : null}
@@ -411,14 +391,15 @@ export default function HomePage() {
                   ))}
                 </ul>
                 <Link
-                  href="#contact"
-                  className={`mt-8 block border px-4 py-3 text-center text-[10px] uppercase tracking-[0.24em] transition-colors duration-300 ${
+                  href={plan.href}
+                  className={`mt-8 inline-flex w-full items-center justify-between rounded-full px-5 py-4 text-[10px] uppercase tracking-[0.24em] transition-colors duration-300 ${
                     plan.featured
-                      ? "border-[color:var(--orange)] bg-[color:var(--orange)] text-[color:var(--white)]"
-                      : "border-[color:var(--orange)] text-[color:var(--orange)] hover:bg-[color:var(--orange)] hover:text-[color:var(--white)]"
+                      ? "bg-[color:var(--orange)] text-[color:var(--white)]"
+                      : "border border-[color:var(--orange)] text-[color:var(--orange)] hover:bg-[color:var(--orange)] hover:text-[color:var(--white)]"
                   }`}
                 >
-                  {plan.category === "Formation" ? "S'inscrire" : "Demander un devis"}
+                  <span>{plan.category === "Formation" ? "S'inscrire" : "Demander un devis"}</span>
+                  <ArrowRight size={14} />
                 </Link>
               </article>
             ))}
@@ -435,15 +416,15 @@ export default function HomePage() {
               <span className="i">OG</span>
             </h2>
             <p className="section-desc mt-4">
-              Conseils, tendances et coulisses du monde audiovisuel et du pilotage drone.
+              Les cartes blog ouvrent maintenant de vraies pages articles.
             </p>
           </div>
 
-          <div className="grid gap-1 lg:grid-cols-[1.5fr_1fr_1fr]">
+          <div className="grid gap-4 lg:grid-cols-[1.5fr_1fr_1fr]">
             {blogPosts.map((post, index) => (
               <article
-                key={post.title}
-                className={`group overflow-hidden bg-[color:var(--dark2)] transition-colors duration-300 hover:bg-[color:var(--gray)] ${
+                key={post.slug}
+                className={`hero-glass-panel overflow-hidden rounded-[2rem] transition-colors duration-300 hover:bg-white/6 ${
                   index === 0 ? "reveal" : index === 1 ? "reveal reveal-delay-1" : "reveal reveal-delay-2"
                 }`}
               >
@@ -460,17 +441,18 @@ export default function HomePage() {
                   <div className="text-[9px] uppercase tracking-[0.2em] text-[color:var(--orange)]">
                     {post.category} <span className="text-[color:var(--gray-light)]">· {post.date}</span>
                   </div>
-                  <h3 className="mt-3 font-[family-name:var(--font-display)] text-[1.2rem] uppercase tracking-[0.08em] text-white transition-colors duration-300 group-hover:text-[color:var(--orange)]">
+                  <h3 className="mt-3 font-[family-name:var(--font-display)] text-[1.2rem] uppercase tracking-[0.08em] text-white transition-colors duration-300 hover:text-[color:var(--orange)]">
                     {post.title}
                   </h3>
                   <p className="mt-3 text-sm leading-7 text-[color:var(--gray-light)]">
                     {post.excerpt}
                   </p>
                   <Link
-                    href="#contact"
+                    href={`/blog/${post.slug}`}
                     className="mt-5 inline-flex items-center gap-2 text-[9px] uppercase tracking-[0.22em] text-[color:var(--orange)] transition-all duration-300 hover:gap-4"
                   >
-                    Lire l&apos;article <span aria-hidden="true">→</span>
+                    Lire l&apos;article
+                    <ArrowRight size={14} />
                   </Link>
                 </div>
               </article>
@@ -488,16 +470,16 @@ export default function HomePage() {
             <h2 className="font-[family-name:var(--font-display)] text-[clamp(2.5rem,4.5vw,3.75rem)] leading-[0.92] tracking-[0.08em] text-white">
               DONNONS VIE
               <br />
-              A VOTRE <span className="o text-[color:var(--orange)]">VI</span>
-              <span className="i text-[color:var(--indigo-light)]">SION</span>
+              A VOTRE <span className="text-[color:var(--orange)]">VI</span>
+              <span className="text-[color:var(--indigo-light)]">SION</span>
             </h2>
             <p className="mt-5 max-w-[34rem] font-[family-name:var(--font-serif)] text-[1rem] italic leading-[1.9] text-[color:var(--gray-light)]">
-              Un projet en tete ? Une formation qui vous interesse ? Parlons-en. Le studio
-              repond et bascule votre demande vers le bon canal rapidement.
+              Le formulaire gere maintenant les workflows de contact, devis et inscription avec
+              validation, pre-remplissage et sorties actionnables.
             </p>
 
             <div className="mt-10 space-y-5">
-              {[ 
+              {[
                 { label: "Telephone", value: siteConfig.phoneDisplay, icon: PhoneCall },
                 { label: "Email", value: siteConfig.email, icon: EnvelopeSimple },
                 { label: "Localisation", value: `${siteConfig.city}, ${siteConfig.country}`, icon: MapPin }
@@ -519,7 +501,7 @@ export default function HomePage() {
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
               <Link
                 href={`tel:${siteConfig.phoneHref}`}
-                className="inline-flex items-center justify-between border border-[color:var(--orange)] px-5 py-4 text-[11px] uppercase tracking-[0.22em] text-[color:var(--orange)] transition-colors duration-300 hover:bg-[color:var(--orange)] hover:text-[color:var(--white)]"
+                className="hero-glass-button inline-flex items-center justify-between rounded-full px-5 py-4 text-[11px] uppercase tracking-[0.22em] text-white"
               >
                 <span className="inline-flex items-center gap-2">
                   <PhoneCall size={16} weight="light" />
@@ -531,7 +513,7 @@ export default function HomePage() {
                 href={siteConfig.whatsappApi}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-between border border-[color:var(--indigo)] px-5 py-4 text-[11px] uppercase tracking-[0.22em] text-[color:var(--indigo-light)] transition-colors duration-300 hover:bg-[color:var(--indigo)] hover:text-[color:var(--white)]"
+                className="hero-glass-button inline-flex items-center justify-between rounded-full px-5 py-4 text-[11px] uppercase tracking-[0.22em] text-white"
               >
                 <span className="inline-flex items-center gap-2">
                   <Broadcast size={16} weight="light" />
