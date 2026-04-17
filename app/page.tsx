@@ -1,5 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import {
+  ArrowRight,
+  Broadcast,
+  Camera,
+  Drone,
+  EnvelopeSimple,
+  GraduationCap,
+  MapPin,
+  PhoneCall,
+  Play,
+  SlidersHorizontal,
+  VideoCamera
+} from "@phosphor-icons/react/dist/ssr";
 
 import { ContactForm } from "@/components/contact-form";
 import { JsonLd } from "@/components/json-ld";
@@ -8,6 +21,7 @@ import {
   droneModules,
   faqs,
   heroStats,
+  media,
   pricingPlans,
   services,
   showcaseProjects,
@@ -47,6 +61,15 @@ const faqJsonLd = {
   }))
 };
 
+const serviceIcons = {
+  Broadcast,
+  Camera,
+  Drone,
+  GraduationCap,
+  SlidersHorizontal,
+  VideoCamera
+} as const;
+
 export default function HomePage() {
   return (
     <main id="main-content" className="relative overflow-hidden pt-24">
@@ -55,6 +78,15 @@ export default function HomePage() {
 
       <section id="hero" className="relative flex min-h-[100dvh] items-center overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_65%_45%,rgba(240,121,33,0.07)_0%,transparent_55%),radial-gradient(ellipse_at_15%_75%,rgba(45,45,181,0.08)_0%,transparent_50%),linear-gradient(160deg,#080808_0%,#0d0d0d_60%,#080808_100%)]" />
+        <Image
+          src={media.hero}
+          alt="Equipe de captation video en direct dans un environnement de production professionnel"
+          fill
+          priority
+          className="object-cover object-center opacity-30"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,8,8,0.92)_0%,rgba(8,8,8,0.72)_48%,rgba(8,8,8,0.45)_100%)]" />
         <div className="absolute inset-y-0 left-[56%] hidden w-px -skew-x-[6deg] bg-[linear-gradient(180deg,transparent,rgba(45,45,181,0.2),transparent)] lg:block" />
 
         <div className="relative z-10 mx-auto grid w-full max-w-[1400px] gap-10 px-4 py-20 md:px-6 lg:grid-cols-[1fr_auto] lg:items-end">
@@ -94,7 +126,7 @@ export default function HomePage() {
                 href="#contact"
                 className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.22em] text-[color:var(--gray-light)] transition-colors duration-300 hover:text-[color:var(--orange)]"
               >
-                Devis gratuit <span aria-hidden="true">→</span>
+                Devis gratuit <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>
@@ -134,12 +166,30 @@ export default function HomePage() {
 
           <div className="grid gap-px bg-white/5 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service, index) => (
-              <article
+              (() => {
+                const ServiceIcon =
+                  serviceIcons[service.icon as keyof typeof serviceIcons] || VideoCamera;
+
+                return (
+                  <article
                 key={service.title}
                 className={`bg-[color:var(--dark)] p-10 transition-colors duration-300 hover:bg-[color:var(--dark2)] ${
                   index < 3 ? "reveal" : "reveal reveal-delay-1"
                 }`}
               >
+                <div className="relative mb-6 aspect-[16/10] overflow-hidden border border-white/6">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1280px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent,rgba(8,8,8,0.58))]" />
+                  <div className="absolute left-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/35 text-[color:var(--orange)] backdrop-blur-sm">
+                    <ServiceIcon size={22} weight="light" />
+                  </div>
+                </div>
                 <div className="font-[family-name:var(--font-display)] text-[3.25rem] leading-none text-[rgba(240,121,33,0.1)]">
                   {service.index}
                 </div>
@@ -153,9 +203,11 @@ export default function HomePage() {
                   href={service.cta}
                   className="mt-7 inline-flex items-center gap-3 text-[9px] uppercase tracking-[0.22em] text-[color:var(--orange)] transition-all duration-300 hover:gap-5"
                 >
-                  En savoir plus <span aria-hidden="true">→</span>
+                  En savoir plus <ArrowRight size={14} aria-hidden="true" />
                 </Link>
-              </article>
+                  </article>
+                );
+              })()
             ))}
           </div>
         </div>
@@ -215,7 +267,7 @@ export default function HomePage() {
                   </h3>
                 </div>
                 <div className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-[rgba(240,121,33,0.5)] bg-black/40 text-sm text-white opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-                  ▶
+                  <Play size={18} weight="fill" />
                 </div>
               </article>
             ))}
@@ -241,12 +293,20 @@ export default function HomePage() {
           <div className="grid gap-12 lg:grid-cols-2">
             <div className="reveal">
               <div className="relative border border-[rgba(45,45,181,0.18)] bg-[color:var(--dark2)] p-10">
+                <Image
+                  src={media.dronePilot}
+                  alt="Pilote de drone en situation de prise de vue aerienne"
+                  fill
+                  className="object-cover opacity-20"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,14,14,0.35),rgba(14,14,14,0.92))]" />
                 <div className="absolute left-0 top-0 h-[2px] w-14 bg-[color:var(--indigo)]" />
                 <div className="absolute bottom-0 right-0 h-[2px] w-14 bg-[color:var(--orange)]" />
-                <div className="py-8 text-center font-[family-name:var(--font-display)] text-[5rem] leading-none text-[color:var(--orange)]">
+                <div className="relative py-8 text-center font-[family-name:var(--font-display)] text-[5rem] leading-none text-[color:var(--orange)]">
                   DRN
                 </div>
-                <div className="grid gap-px bg-white/5 sm:grid-cols-2">
+                <div className="relative grid gap-px bg-white/5 sm:grid-cols-2">
                   {[
                     { value: "5", key: "Modules" },
                     { value: "40h", key: "Formation" },
@@ -437,13 +497,15 @@ export default function HomePage() {
             </p>
 
             <div className="mt-10 space-y-5">
-              {[
-                { label: "Telephone", value: siteConfig.phoneDisplay },
-                { label: "Email", value: siteConfig.email },
-                { label: "Localisation", value: `${siteConfig.city}, ${siteConfig.country}` }
+              {[ 
+                { label: "Telephone", value: siteConfig.phoneDisplay, icon: PhoneCall },
+                { label: "Email", value: siteConfig.email, icon: EnvelopeSimple },
+                { label: "Localisation", value: `${siteConfig.city}, ${siteConfig.country}`, icon: MapPin }
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-4">
-                  <div className="mt-1 h-3 w-3 rounded-full bg-[color:var(--orange)]" />
+                  <div className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--orange)]/25 bg-[color:var(--orange-dim)] text-[color:var(--orange)]">
+                    <item.icon size={18} weight="light" />
+                  </div>
                   <div>
                     <div className="text-[10px] uppercase tracking-[0.24em] text-[color:var(--gray-light)]">
                       {item.label}
@@ -459,7 +521,11 @@ export default function HomePage() {
                 href={`tel:${siteConfig.phoneHref}`}
                 className="inline-flex items-center justify-between border border-[color:var(--orange)] px-5 py-4 text-[11px] uppercase tracking-[0.22em] text-[color:var(--orange)] transition-colors duration-300 hover:bg-[color:var(--orange)] hover:text-[color:var(--white)]"
               >
-                Appeler <span aria-hidden="true">→</span>
+                <span className="inline-flex items-center gap-2">
+                  <PhoneCall size={16} weight="light" />
+                  Appeler
+                </span>
+                <ArrowRight size={14} aria-hidden="true" />
               </Link>
               <Link
                 href={siteConfig.whatsappApi}
@@ -467,7 +533,11 @@ export default function HomePage() {
                 rel="noreferrer"
                 className="inline-flex items-center justify-between border border-[color:var(--indigo)] px-5 py-4 text-[11px] uppercase tracking-[0.22em] text-[color:var(--indigo-light)] transition-colors duration-300 hover:bg-[color:var(--indigo)] hover:text-[color:var(--white)]"
               >
-                WhatsApp <span aria-hidden="true">→</span>
+                <span className="inline-flex items-center gap-2">
+                  <Broadcast size={16} weight="light" />
+                  WhatsApp
+                </span>
+                <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>

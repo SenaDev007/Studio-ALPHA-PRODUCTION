@@ -25,6 +25,17 @@ export const siteConfig = {
   tagline: "Vision. Image. Impact."
 };
 
+export const media = {
+  hero: "/media/hero-broadcast.jpg",
+  serviceLighting: "/media/service-lighting.jpg",
+  serviceFilmset: "/media/service-filmset.jpg",
+  serviceEditing: "/media/service-editing.jpg",
+  dronePilot: "/media/drone-pilot.jpg",
+  cityAerial: "/media/city-aerial.jpg",
+  cameraOperator: "/media/camera-operator.jpg",
+  cinematographer: "/media/cinematographer.jpg"
+};
+
 export const heroStats = [
   { value: "150+", label: "Projets livres" },
   { value: "5", label: "Piliers de service" },
@@ -35,6 +46,8 @@ export const services = [
   {
     index: "01",
     title: "Production video",
+    icon: "VideoCamera",
+    image: media.cinematographer,
     description:
       "Clips institutionnels, publicites, documentaires et evenements. Le studio construit des recits propres avec une execution soignee.",
     cta: "#contact"
@@ -42,6 +55,8 @@ export const services = [
   {
     index: "02",
     title: "Prise de vue drone",
+    icon: "Drone",
+    image: media.dronePilot,
     description:
       "Vues aeriennes pour l'immobilier, les evenements, les activations et les films de marque avec trajectoires maitrisees.",
     cta: "#formation"
@@ -49,6 +64,8 @@ export const services = [
   {
     index: "03",
     title: "Photographie",
+    icon: "Camera",
+    image: media.cameraOperator,
     description:
       "Portraits, reportages, produits et images corporate pour renforcer l'identite visuelle sur tous les supports.",
     cta: "#contact"
@@ -56,6 +73,8 @@ export const services = [
   {
     index: "04",
     title: "Postproduction",
+    icon: "SlidersHorizontal",
+    image: media.serviceEditing,
     description:
       "Montage, etalonnage, sound design, sous-titrage et declinaisons multi-formats pour une diffusion immediate.",
     cta: "#contact"
@@ -63,6 +82,8 @@ export const services = [
   {
     index: "05",
     title: "Diffusion live",
+    icon: "Broadcast",
+    image: media.hero,
     description:
       "Streaming de conferences, concerts, ceremoniees et prises de parole avec une mise en ligne fluide sur les plateformes utiles.",
     cta: "#contact"
@@ -70,6 +91,8 @@ export const services = [
   {
     index: "06",
     title: "Formation drone",
+    icon: "GraduationCap",
+    image: media.serviceLighting,
     description:
       "Apprentissage progressif du pilotage et de la prise de vue aerienne, du debutant au niveau professionnel.",
     cta: "#formation"
@@ -81,42 +104,42 @@ export const showcaseProjects = [
     slug: "tower-inauguration",
     category: "Drone · Corporate",
     title: "Summit Tower inauguration",
-    image: "/gallery/brand-campaign.svg",
+    image: media.cityAerial,
     span: "lg:col-span-7 lg:row-span-2"
   },
   {
     slug: "elegance-wedding",
     category: "Evenement",
     title: "Mariage Elegance 2024",
-    image: "/gallery/event-recap.svg",
+    image: media.hero,
     span: "lg:col-span-5"
   },
   {
     slug: "coastal-series",
     category: "Drone · Nature",
     title: "Cote sauvage serie aerienne",
-    image: "/gallery/institution-report.svg",
+    image: media.dronePilot,
     span: "lg:col-span-5"
   },
   {
     slug: "arts-festival",
     category: "Festival",
     title: "Festival des arts",
-    image: "/gallery/event-recap.svg",
+    image: media.serviceFilmset,
     span: "lg:col-span-4 lg:row-span-2"
   },
   {
     slug: "prestige-residence",
     category: "Immobilier",
     title: "Residence Prestige",
-    image: "/gallery/brand-campaign.svg",
+    image: media.cameraOperator,
     span: "lg:col-span-4 lg:row-span-2"
   },
   {
     slug: "official-clip",
     category: "Clip musical",
     title: "Artiste clip officiel",
-    image: "/gallery/institution-report.svg",
+    image: media.cinematographer,
     span: "lg:col-span-4 lg:row-span-2"
   }
 ];
@@ -207,7 +230,7 @@ export const blogPosts = [
     title: "5 techniques de vol pour des plans cinematographiques plus propres",
     excerpt:
       "Comment stabiliser les trajectoires, anticiper les mouvements et rendre les plans aeriens plus utiles au montage.",
-    image: "/gallery/brand-campaign.svg",
+    image: media.serviceEditing,
     large: true
   },
   {
@@ -216,7 +239,7 @@ export const blogPosts = [
     title: "Pourquoi la video verticale compte encore en 2025",
     excerpt:
       "Le format vertical n'est pas une option secondaire. Il structure deja une partie de la diffusion des marques.",
-    image: "/gallery/event-recap.svg"
+    image: media.hero
   },
   {
     category: "Formation",
@@ -224,7 +247,7 @@ export const blogPosts = [
     title: "Ce qu'il faut savoir avant de piloter un drone",
     excerpt:
       "Reglementation, zones de vol, securite et bons reflexes avant toute prise de vue aerienne.",
-    image: "/gallery/institution-report.svg"
+    image: media.dronePilot
   }
 ];
 
